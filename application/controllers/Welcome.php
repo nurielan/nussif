@@ -28,5 +28,13 @@ class Welcome extends CI_Controller {
         $this->load->library('encryption');
 
         echo bin2hex($this->encryption->create_key(16));
+        echo '</br>';
+        echo $this->encryption->encrypt('nussifduakali');
+        echo '</br>';
+        echo $this->encryption->decrypt($this->encryption->encrypt('nussifduakali'));
+
+        $this->load->database();
+
+        print_r($this->db->get_where('user', array('email' => 'superadmin@nussif.co.id'), 1)->row_object());
     }
 }
